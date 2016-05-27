@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 47;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F1E0ACB1CF7244E00DC8EBB /* ChannelsCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E0ACA1CF7244E00DC8EBB /* ChannelsCollectionHeaderView.m */; };
+		0F91DE901CF7F47D00B618A6 /* coollogo_com-242494397.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F91DE8F1CF7F47D00B618A6 /* coollogo_com-242494397.png */; };
+		9C99D99045995E05A8FD3565 /* libPods-Videogram.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A029E2A864383B585ECEAC78 /* libPods-Videogram.a */; };
+		A811BB631BF24FCE00CE90DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A811BB621BF24FCE00CE90DA /* main.m */; };
+		A811BB661BF24FCE00CE90DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A811BB651BF24FCE00CE90DA /* AppDelegate.m */; };
+		A811BB691BF24FCE00CE90DA /* VideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A811BB681BF24FCE00CE90DA /* VideoListViewController.m */; };
+		A811BB6C1BF24FCE00CE90DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A811BB6A1BF24FCE00CE90DA /* Main.storyboard */; };
+		A811BB6E1BF24FCE00CE90DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A811BB6D1BF24FCE00CE90DA /* Assets.xcassets */; };
+		A811BB711BF24FCE00CE90DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A811BB6F1BF24FCE00CE90DA /* LaunchScreen.storyboard */; };
+		A811BB811BF2570B00CE90DA /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = A811BB801BF2570B00CE90DA /* Video.m */; };
+		A811BB861BF2575400CE90DA /* NSString+StringUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A811BB851BF2575300CE90DA /* NSString+StringUtilities.m */; };
+		A811BB891BF257B500CE90DA /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A811BB881BF257B500CE90DA /* VideoManager.m */; };
+		A8BB035F1BF82270009CDD4C /* VideoShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB035E1BF82270009CDD4C /* VideoShowViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F1E0AC91CF7244E00DC8EBB /* ChannelsCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelsCollectionHeaderView.h; sourceTree = "<group>"; };
+		0F1E0ACA1CF7244E00DC8EBB /* ChannelsCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelsCollectionHeaderView.m; sourceTree = "<group>"; };
+		0F91DE8F1CF7F47D00B618A6 /* coollogo_com-242494397.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coollogo_com-242494397.png"; sourceTree = "<group>"; };
+		8E16B651D89E0B57FAC05AD7 /* Pods-Videogram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Videogram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Videogram/Pods-Videogram.release.xcconfig"; sourceTree = "<group>"; };
+		A029E2A864383B585ECEAC78 /* libPods-Videogram.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Videogram.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A811BB5E1BF24FCE00CE90DA /* Videogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Videogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A811BB621BF24FCE00CE90DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A811BB641BF24FCE00CE90DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A811BB651BF24FCE00CE90DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A811BB671BF24FCE00CE90DA /* VideoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListViewController.h; sourceTree = "<group>"; };
+		A811BB681BF24FCE00CE90DA /* VideoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListViewController.m; sourceTree = "<group>"; };
+		A811BB6B1BF24FCE00CE90DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A811BB6D1BF24FCE00CE90DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A811BB701BF24FCE00CE90DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A811BB721BF24FCE00CE90DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A811BB7F1BF2570B00CE90DA /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		A811BB801BF2570B00CE90DA /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		A811BB841BF2575300CE90DA /* NSString+StringUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringUtilities.h"; sourceTree = "<group>"; };
+		A811BB851BF2575300CE90DA /* NSString+StringUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringUtilities.m"; sourceTree = "<group>"; };
+		A811BB871BF257B500CE90DA /* VideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoManager.h; sourceTree = "<group>"; };
+		A811BB881BF257B500CE90DA /* VideoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoManager.m; sourceTree = "<group>"; };
+		A8BB035D1BF82270009CDD4C /* VideoShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShowViewController.h; sourceTree = "<group>"; };
+		A8BB035E1BF82270009CDD4C /* VideoShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoShowViewController.m; sourceTree = "<group>"; };
+		FBB4183C74430B321E2407E5 /* Pods-Videogram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Videogram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Videogram/Pods-Videogram.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A811BB5B1BF24FCE00CE90DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C99D99045995E05A8FD3565 /* libPods-Videogram.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DDB406DBF13C4A57AEF7824 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBB4183C74430B321E2407E5 /* Pods-Videogram.debug.xcconfig */,
+				8E16B651D89E0B57FAC05AD7 /* Pods-Videogram.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		58AB58C64F5256CFFD7C74BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A029E2A864383B585ECEAC78 /* libPods-Videogram.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A811BB551BF24FCE00CE90DA = {
+			isa = PBXGroup;
+			children = (
+				A811BB601BF24FCE00CE90DA /* Videogram */,
+				A811BB5F1BF24FCE00CE90DA /* Products */,
+				2DDB406DBF13C4A57AEF7824 /* Pods */,
+				58AB58C64F5256CFFD7C74BB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A811BB5F1BF24FCE00CE90DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A811BB5E1BF24FCE00CE90DA /* Videogram.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A811BB601BF24FCE00CE90DA /* Videogram */ = {
+			isa = PBXGroup;
+			children = (
+				A811BB7D1BF2542500CE90DA /* AppDelegate */,
+				A811BB8A1BF257B800CE90DA /* Categories */,
+				A811BB7E1BF2542C00CE90DA /* Controllers */,
+				A811BB821BF2570F00CE90DA /* Model */,
+				A811BB831BF2571900CE90DA /* Views */,
+				A811BB6D1BF24FCE00CE90DA /* Assets.xcassets */,
+				0F91DE8F1CF7F47D00B618A6 /* coollogo_com-242494397.png */,
+				A811BB721BF24FCE00CE90DA /* Info.plist */,
+				A811BB611BF24FCE00CE90DA /* Supporting Files */,
+			);
+			path = Videogram;
+			sourceTree = "<group>";
+		};
+		A811BB611BF24FCE00CE90DA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A811BB621BF24FCE00CE90DA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A811BB7D1BF2542500CE90DA /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				A811BB641BF24FCE00CE90DA /* AppDelegate.h */,
+				A811BB651BF24FCE00CE90DA /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		A811BB7E1BF2542C00CE90DA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0F1E0AC91CF7244E00DC8EBB /* ChannelsCollectionHeaderView.h */,
+				0F1E0ACA1CF7244E00DC8EBB /* ChannelsCollectionHeaderView.m */,
+				A811BB671BF24FCE00CE90DA /* VideoListViewController.h */,
+				A811BB681BF24FCE00CE90DA /* VideoListViewController.m */,
+				A8BB035D1BF82270009CDD4C /* VideoShowViewController.h */,
+				A8BB035E1BF82270009CDD4C /* VideoShowViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A811BB821BF2570F00CE90DA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A811BB7F1BF2570B00CE90DA /* Video.h */,
+				A811BB801BF2570B00CE90DA /* Video.m */,
+				A811BB871BF257B500CE90DA /* VideoManager.h */,
+				A811BB881BF257B500CE90DA /* VideoManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A811BB831BF2571900CE90DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A811BB6A1BF24FCE00CE90DA /* Main.storyboard */,
+				A811BB6F1BF24FCE00CE90DA /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A811BB8A1BF257B800CE90DA /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A811BB841BF2575300CE90DA /* NSString+StringUtilities.h */,
+				A811BB851BF2575300CE90DA /* NSString+StringUtilities.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A811BB5D1BF24FCE00CE90DA /* Videogram */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A811BB751BF24FCE00CE90DA /* Build configuration list for PBXNativeTarget "Videogram" */;
+			buildPhases = (
+				D5ABA3C8F56F9BDB6E01BC54 /* 📦 Check Pods Manifest.lock */,
+				A811BB5A1BF24FCE00CE90DA /* Sources */,
+				A811BB5B1BF24FCE00CE90DA /* Frameworks */,
+				A811BB5C1BF24FCE00CE90DA /* Resources */,
+				DFCE205F46F13FD0A28273DB /* 📦 Embed Pods Frameworks */,
+				18CEB680399388A6D7C88F51 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Videogram;
+			productName = CODEMagYTVideos;
+			productReference = A811BB5E1BF24FCE00CE90DA /* Videogram.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A811BB561BF24FCE00CE90DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "";
+				TargetAttributes = {
+					A811BB5D1BF24FCE00CE90DA = {
+						CreatedOnToolsVersion = 7.1;
+					};
+				};
+			};
+			buildConfigurationList = A811BB591BF24FCE00CE90DA /* Build configuration list for PBXProject "Videogram" */;
+			compatibilityVersion = "Xcode 6.3";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A811BB551BF24FCE00CE90DA;
+			productRefGroup = A811BB5F1BF24FCE00CE90DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A811BB5D1BF24FCE00CE90DA /* Videogram */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A811BB5C1BF24FCE00CE90DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F91DE901CF7F47D00B618A6 /* coollogo_com-242494397.png in Resources */,
+				A811BB711BF24FCE00CE90DA /* LaunchScreen.storyboard in Resources */,
+				A811BB6E1BF24FCE00CE90DA /* Assets.xcassets in Resources */,
+				A811BB6C1BF24FCE00CE90DA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18CEB680399388A6D7C88F51 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Videogram/Pods-Videogram-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5ABA3C8F56F9BDB6E01BC54 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DFCE205F46F13FD0A28273DB /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Videogram/Pods-Videogram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A811BB5A1BF24FCE00CE90DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A811BB861BF2575400CE90DA /* NSString+StringUtilities.m in Sources */,
+				A811BB691BF24FCE00CE90DA /* VideoListViewController.m in Sources */,
+				A811BB661BF24FCE00CE90DA /* AppDelegate.m in Sources */,
+				A811BB811BF2570B00CE90DA /* Video.m in Sources */,
+				A811BB891BF257B500CE90DA /* VideoManager.m in Sources */,
+				A8BB035F1BF82270009CDD4C /* VideoShowViewController.m in Sources */,
+				A811BB631BF24FCE00CE90DA /* main.m in Sources */,
+				0F1E0ACB1CF7244E00DC8EBB /* ChannelsCollectionHeaderView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A811BB6A1BF24FCE00CE90DA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A811BB6B1BF24FCE00CE90DA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A811BB6F1BF24FCE00CE90DA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A811BB701BF24FCE00CE90DA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A811BB731BF24FCE00CE90DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A811BB741BF24FCE00CE90DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A811BB761BF24FCE00CE90DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBB4183C74430B321E2407E5 /* Pods-Videogram.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Videogram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugenerdx.Videogram;
+				PRODUCT_NAME = Videogram;
+			};
+			name = Debug;
+		};
+		A811BB771BF24FCE00CE90DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E16B651D89E0B57FAC05AD7 /* Pods-Videogram.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Videogram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugenerdx.Videogram;
+				PRODUCT_NAME = Videogram;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A811BB591BF24FCE00CE90DA /* Build configuration list for PBXProject "Videogram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A811BB731BF24FCE00CE90DA /* Debug */,
+				A811BB741BF24FCE00CE90DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A811BB751BF24FCE00CE90DA /* Build configuration list for PBXNativeTarget "Videogram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A811BB761BF24FCE00CE90DA /* Debug */,
+				A811BB771BF24FCE00CE90DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A811BB561BF24FCE00CE90DA /* Project object */;
+}
