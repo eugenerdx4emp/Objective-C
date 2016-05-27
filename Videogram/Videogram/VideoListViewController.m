@@ -25,7 +25,7 @@ static NSString *cellIdentifier = @"CVCell";
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *ytVideos;
 
-@property (strong, nonatomic) NSMutableDictionary *groupedBySectionAndSortedById;
+@property (strong, nonatomic) NSMutableDictionary *groupedByChannelAndSortedByTitle;
 @property (nonatomic, strong) NSArray *rowArray;
 @property (nonatomic, strong) NSMutableArray *ytVideosFromChannels;
 
@@ -109,8 +109,8 @@ static NSString *cellIdentifier = @"CVCell";
     _array = [self.ytVideosFromChannels copy];
     NSArray *rowArray = [[NSArray alloc] init];
     rowArray = [self.ytVideosFromChannels copy];
-    [self studentsGroupedBySectionAndSortedByTrack:rowArray];
-    return [self.groupedStudentBySectionAndSortedById count];
+    [self videosGroupedByChannelAndSortedByName:rowArray];
+    return [self.groupedVideoByChannelAndSortedByTitle count];
 }
 
 
@@ -120,11 +120,11 @@ static NSString *cellIdentifier = @"CVCell";
 {
     NSMutableArray *rowArray = [[NSMutableArray alloc] init];
     rowArray = [self.ytVideosFromChannels copy];
-    [self studentsGroupedBySectionAndSortedByTrack:rowArray];
+    [self videosGroupedByChannelAndSortedByName:rowArray];
     NSArray *keyArray = [[NSArray alloc]init];
-    keyArray = [self.groupedStudentBySectionAndSortedById allKeys];
+    keyArray = [self.groupedVideoByChannelAndSortedByTitle allKeys];
     NSString *key = [keyArray objectAtIndex:section];
-    NSDictionary *dictionary = [self.groupedStudentBySectionAndSortedById objectForKey:key];
+    NSDictionary *dictionary = [self.groupedVideoByChannelAndSortedByTitle objectForKey:key];
     
     return [dictionary count];
 }
@@ -146,10 +146,10 @@ static NSString *cellIdentifier = @"CVCell";
         [subview removeFromSuperlayer];
     }
     
-    NSArray *studentArray = [[NSArray alloc]init];
-    studentArray = [self.groupedStudentBySectionAndSortedById allKeys];
-    NSString *key = [studentArray objectAtIndex:indexPath.section];
-    NSDictionary *dictionary = [self.groupedStudentBySectionAndSortedById objectForKey:key];
+    NSArray *channelArray = [[NSArray alloc]init];
+    channelArray = [self.groupedVideoByChannelAndSortedByTitle allKeys];
+    NSString *key = [channelArray objectAtIndex:indexPath.section];
+    NSDictionary *dictionary = [self.groupedVideoByChannelAndSortedByTitle objectForKey:key];
     NSMutableArray *newRowArray = [[NSMutableArray alloc] init];
     newRowArray = dictionary.copy;
     CALayer *imageViewLayer = cellImage.layer;
@@ -159,20 +159,20 @@ static NSString *cellIdentifier = @"CVCell";
     maskLayer.endPoint = CGPointMake(1, 0);
     maskLayer.frame = imageViewLayer.bounds;
     [imageViewLayer insertSublayer:maskLayer below:0];
-    Video* cellStudent = [newRowArray objectAtIndex:indexPath.row];
+    Video* cellVideo = [newRowArray objectAtIndex:indexPath.row];
     
    
 
     
     
-    [SDWebImageDownloader.sharedDownloader downloadImageWithURL:[NSURL URLWithString:cellStudent.thumbnailURL]
+    [SDWebImageDownloader.sharedDownloader downloadImageWithURL:[NSURL URLWithString:cellVideo.thumbnailURL]
                                                         options:0
                                                        progress:^(NSInteger receivedSize, NSInteger expectedSize){}
                                                       completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
         if (image && finished){
             dispatch_async(dispatch_get_main_queue(), ^{
                 cellImage.image=[UIImage imageWithData:data];
-                NSString *string = [NSString stringWithFormat:@"%@", cellStudent.videoTitle];
+                NSString *string = [NSString stringWithFormat:@"%@", cellVideo.videoTitle];
                 cellTitle.text = string;
             });
         }
@@ -197,7 +197,7 @@ static NSString *cellIdentifier = @"CVCell";
                                                                                       withReuseIdentifier:@"HeaderView"
                                                                                              forIndexPath:indexPath];
         NSArray *sectionsArray = [[NSArray alloc]init];
-        sectionsArray = [self.groupedStudentBySectionAndSortedById allKeys];
+        sectionsArray = [self.groupedVideoByChannelAndSortedByTitle allKeys];
         NSString *title = [NSString stringWithFormat:@"%@", [sectionsArray objectAtIndex:indexPath.section]];
         headerView.title.text = title;
         reusableview = headerView;
@@ -206,13 +206,14 @@ static NSString *cellIdentifier = @"CVCell";
     return reusableview;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
 
 
-    NSArray *studentArray = [[NSArray alloc]init];
-    studentArray = [self.groupedStudentBySectionAndSortedById allKeys];
-    NSString *key = [studentArray objectAtIndex:indexPath.section];
-    NSDictionary *dictionary = [self.groupedStudentBySectionAndSortedById objectForKey:key];
+    NSArray *channelArray = [[NSArray alloc]init];
+    channelArray = [self.groupedVideoByChannelAndSortedByTitle allKeys];
+    NSString *key = [channelArray objectAtIndex:indexPath.section];
+    NSDictionary *dictionary = [self.groupedVideoByChannelAndSortedByTitle objectForKey:key];
     NSMutableArray *newRowArray = [[NSMutableArray alloc] init];
     newRowArray = dictionary.copy;
 
@@ -222,43 +223,7 @@ static NSString *cellIdentifier = @"CVCell";
     details.video = [newRowArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:details animated:TRUE];
     
-//
-//    VideoShowViewController *details = [self.storyboard instantiateViewControllerWithIdentifier:@"yt-video-controller"];
-//    details.video = [self.ytVideos objectAtIndex:indexPath.row];
-//    [self.navigationController pushViewController:details animated:TRUE];
-    
-    
 }
-//
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if([[segue identifier]isEqualToString:@"showVideo"])
-//    {
-//        VideoShowViewController *details = [self.storyboard instantiateViewControllerWithIdentifier:@"yt-video-controller"];
-//        NSArray *indexRow = [self.collectionView indexPathsForSelectedItems];
-//        NSLog(@"%@", indexRow);
-////        NSInteger indexSection = [self.tableView indexPathForSelectedRow].section;
-////        destination.selectedStudentId = indexRow;
-////        NSArray *studentArray = [[NSArray alloc]init];
-////        studentArray = [[StudentsService sharedService].groupedStudentBySectionAndSortedById allKeys];
-////        NSString *key = [studentArray objectAtIndex:indexSection];
-////        NSDictionary *dictionary = [[StudentsService sharedService].groupedStudentBySectionAndSortedById objectForKey:key];
-////        NSArray *rowArray = [[NSArray alloc] init];
-////        rowArray = dictionary.copy;
-////        Student* selectedStudent=[rowArray objectAtIndex:indexRow];
-////        destination.student = selectedStudent;
-//        
-//        
-////        NSArray *studentArray = [[NSArray alloc]init];
-////        studentArray = [self.groupedStudentBySectionAndSortedById allKeys];
-////        NSString *key = [studentArray objectAtIndex:indexPath.section];
-////        NSDictionary *dictionary = [self.groupedStudentBySectionAndSortedById objectForKey:key];
-////        NSMutableArray *newRowArray = [[NSMutableArray alloc] init];
-////        newRowArray = dictionary.copy;
-////        
-//    }
-//}
 
 #pragma mark - UIPickerViewDelegate
 
@@ -275,8 +240,8 @@ numberOfRowsInComponent:(NSInteger)component
     _array = [self.ytVideosFromChannels copy];
     NSArray *rowArray = [[NSArray alloc] init];
     rowArray = [self.ytVideosFromChannels copy];
-    [self studentsGroupedBySectionAndSortedByTrack:rowArray];
-    return [self.groupedStudentBySectionAndSortedById count];
+    [self videosGroupedByChannelAndSortedByName:rowArray];
+    return [self.groupedVideoByChannelAndSortedByTitle count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView
@@ -288,7 +253,7 @@ numberOfRowsInComponent:(NSInteger)component
     
         NSInteger i;
     NSArray *sectionsArray = [[NSArray alloc]init];
-    sectionsArray = [self.groupedStudentBySectionAndSortedById allKeys];
+    sectionsArray = [self.groupedVideoByChannelAndSortedByTitle allKeys];
             for(i = 0; i < [sectionsArray count]; i++)
             {
                 NSString *title = [NSString stringWithFormat:@"%@", [sectionsArray objectAtIndex:i]];
@@ -316,20 +281,20 @@ numberOfRowsInComponent:(NSInteger)component
 }
 
 #pragma mark - Service Methods
-- (NSDictionary *)studentsGroupedBySectionAndSortedByTrack:(NSArray *)videos {
+- (NSDictionary *)videosGroupedByChannelAndSortedByName:(NSArray *)videos {
     
     NSSortDescriptor *byId = [NSSortDescriptor sortDescriptorWithKey:@"channelTitle" ascending:YES];
-    NSArray *sectionName = [videos valueForKeyPath:@"@distinctUnionOfObjects.channelTitle"];
-    self.groupedBySectionAndSortedById = [[NSMutableDictionary alloc] init];
-    for (NSString *section in sectionName) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"channelTitle == %@",section];
-        NSArray *currentStudentsId = [videos filteredArrayUsingPredicate:predicate];
-        NSArray *currentSectionsSortedById = [currentStudentsId sortedArrayUsingDescriptors:@[byId]];
-        [self.groupedBySectionAndSortedById setObject:currentSectionsSortedById
-                                               forKey:section];
-        _groupedStudentBySectionAndSortedById = [self.groupedBySectionAndSortedById copy];
+    NSArray *channelName = [videos valueForKeyPath:@"@distinctUnionOfObjects.channelTitle"];
+    self.groupedByChannelAndSortedByTitle = [[NSMutableDictionary alloc] init];
+    for (NSString *channel in channelName) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"channelTitle == %@",channel];
+        NSArray *currentVideoTitleId = [videos filteredArrayUsingPredicate:predicate];
+        NSArray *currentSectionsSortedById = [currentVideoTitleId sortedArrayUsingDescriptors:@[byId]];
+        [self.groupedByChannelAndSortedByTitle setObject:currentSectionsSortedById
+                                               forKey:channel];
+        _groupedVideoByChannelAndSortedByTitle = [self.groupedByChannelAndSortedByTitle copy];
     }
-    return _groupedStudentBySectionAndSortedById;
+    return _groupedVideoByChannelAndSortedByTitle;
 }
 
 

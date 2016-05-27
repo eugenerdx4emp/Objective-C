@@ -11,10 +11,9 @@
 
 @interface VideoListViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (copy, nonatomic) NSDictionary *groupedStudentBySectionAndSortedById;
+@property (copy, nonatomic) NSDictionary *groupedVideoByChannelAndSortedByTitle;
 @property (nonatomic, copy, readonly) NSArray *array;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
-- (NSDictionary *)getArray;
 @end
 
