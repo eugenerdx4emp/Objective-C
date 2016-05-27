@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kYH-97-3zl"/>
+                        <viewControllerLayoutGuide type="bottom" id="fnS-DX-qgz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mBs-zK-0pO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone-apps" translatesAutoresizingMaskIntoConstraints="NO" id="gIf-VW-f5o">
+                                <rect key="frame" x="20" y="179" width="335" height="309"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gIf-VW-f5o" firstAttribute="centerX" secondItem="mBs-zK-0pO" secondAttribute="centerX" id="3DJ-5V-pgn"/>
+                            <constraint firstItem="gIf-VW-f5o" firstAttribute="top" secondItem="kYH-97-3zl" secondAttribute="bottom" constant="159" id="E7c-XB-ZLC"/>
+                            <constraint firstItem="gIf-VW-f5o" firstAttribute="leading" secondItem="mBs-zK-0pO" secondAttribute="leadingMargin" constant="4" id="LCG-Bm-u5F"/>
+                            <constraint firstItem="gIf-VW-f5o" firstAttribute="centerY" secondItem="mBs-zK-0pO" secondAttribute="centerY" id="YNS-Va-5z1"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-11.5" y="383.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="iPhone-apps" width="800" height="600"/>
+    </resources>
+</document>

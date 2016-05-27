@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "44E5D920E36C2744611CA3C18E91A7505DE8AD1A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3562661F4EDF8811BC6120159F2B985E771238A6" : 0,
+    "44E5D920E36C2744611CA3C18E91A7505DE8AD1A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "93C7864D-A981-466D-A623-46B3E139355D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3562661F4EDF8811BC6120159F2B985E771238A6" : "",
+    "44E5D920E36C2744611CA3C18E91A7505DE8AD1A" : "StudentsApp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Students App",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Students App.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/eugenerdx4emp\/Objective-C.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3562661F4EDF8811BC6120159F2B985E771238A6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/eugenerdx\/objectivec.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "44E5D920E36C2744611CA3C18E91A7505DE8AD1A"
+    }
+  ]
+}
