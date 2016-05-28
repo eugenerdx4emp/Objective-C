@@ -54,6 +54,10 @@ typedef enum
                                                  name:NotificationGroupsServiceHasNoHTTPRequests
                                                object:nil];
 
+    
+    
+    [NSTimer scheduledTimerWithTimeInterval:300.0f target:self selector:@selector(checkInternetConnection) userInfo:nil repeats:YES];
+
 }
 
 
@@ -545,5 +549,73 @@ numberOfRowsInComponent:(NSInteger)component
     [self dismissViewControllerAnimated:YES
                              completion:nil];
 }
+
+
+- (void)checkInternetConnection
+{
+    if([[[Network alloc]init] connectedToInternet] == NO)
+    {
+        [self checkInternetConnectionAlertView];
+    }
+    if([[[Network alloc]init] connectedToInternet] == YES)
+    {
+        NSLog(@"Connected to server");
+        [[StudentsService sharedService] updateStudentsList];
+        
+    }
+}
+
+
+- (void) checkInternetConnectionAlertView
+{
+    
+    NSString *alertTitle = @"The main database is disconnected";
+    NSString *alertMessage = @"The application running in offline mode. You can't editing the tableview. You can only read information.";
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                             message:alertMessage
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    NSString *cancel = @"Try to connect";
+    NSString *ok = @"OK";
+    UIAlertAction *tryingToConnect = [UIAlertAction actionWithTitle:cancel
+                                                              style:UIAlertActionStyleCancel
+                                                            handler:^(UIAlertAction *action)
+                                      {
+                                          NSLog(@"trying to connect action");
+                                          
+                                          if([[[Network alloc]init] connectedToInternet] == NO)
+                                          {
+                                              [self checkInternetConnectionAlertView];
+                                          }
+                                          else
+                                          {
+                                              [[StudentsService sharedService] updateStudentsList];
+                                              [self refreshPicker];
+                                              [self dismissViewControllerAnimated:YES
+                                                                       completion:nil];
+                                          }
+                                          
+                                          
+                                      }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action)
+                               {
+                                   NSLog(@"OK action");
+                                   
+                                   
+                               }];
+    
+    okAction.enabled = YES;
+    [self presentViewController:alertController
+                       animated:YES
+                     completion:nil];
+    
+    [alertController addAction:tryingToConnect];
+    [alertController addAction:okAction];
+    
+}
+
 
 @end

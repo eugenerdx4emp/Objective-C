@@ -93,6 +93,11 @@
                                                  name:NotificationStudentsServiceHasNoHTTPRequests
                                                object:nil];
     
+    
+    [NSTimer scheduledTimerWithTimeInterval:300.0f target:self selector:@selector(checkInternetConnection) userInfo:nil repeats:YES];
+
+    
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -518,5 +523,17 @@ moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
     return [documentsPath stringByAppendingPathComponent:name];
 }
 
+- (void)checkInternetConnection
+{
+    if([[[Network alloc]init] connectedToInternet] == NO)
+    {
+        [self checkInternetConnectionAlertView];
+    }
+    if([[[Network alloc]init] connectedToInternet] == YES)
+    {
+        NSLog(@"Connected to server");
+        [[StudentsService sharedService] updateStudentsList];
 
+    }
+}
 @end
