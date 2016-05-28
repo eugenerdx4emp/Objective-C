@@ -16,7 +16,8 @@
     NSString *pickRowName;
     NSString *selectedPickerRow;
 }
-
+@property (weak, nonatomic) NSData * imageData;
+@property (assign, nonatomic) BOOL editing;
 @end
  @implementation StudentDetailsViewController
 
@@ -132,7 +133,7 @@
         item = UIBarButtonSystemItemEdit;
         NSString *str = [NSString stringWithFormat:@"%@", [self.student group]];
         NSMutableArray *array = [[NSMutableArray alloc] init];
-        array = [[GroupsService sharedService].groupsList copy];
+        array = [[SectionService sharedService].groupsList copy];
         pickerRowName = [[NSMutableArray alloc]init];
         pickerRowId = [[NSMutableArray alloc]init];
         if(self.editing == NO)
@@ -149,8 +150,8 @@
             for(i = 0; i < [array count]; i++)
             {
                 Section *section = [array objectAtIndex:i];
-                NSString *stringWithName = [NSString stringWithFormat:@"%@",  section.group];
-                NSString *stringWithId = [NSString stringWithFormat:@"%@", section.groupId];
+                NSString *stringWithName = [NSString stringWithFormat:@"%@",  section.section];
+                NSString *stringWithId = [NSString stringWithFormat:@"%@", section.sectionId];
                 [pickerRowName addObject:stringWithName];
                 [pickerRowId addObject:stringWithId];
             }
@@ -282,8 +283,8 @@ numberOfRowsInComponent:(NSInteger)component
     }
     else
     {
-        NSLog(@"count = %lu", (unsigned long)[[GroupsService sharedService].groupsList count]);
-        return [[GroupsService sharedService].groupsList count];
+        NSLog(@"count = %lu", (unsigned long)[[SectionService sharedService].groupsList count]);
+        return [[SectionService sharedService].groupsList count];
     }
 }
 
@@ -295,26 +296,26 @@ numberOfRowsInComponent:(NSInteger)component
     if(self.editing == NO)
     {
         NSMutableArray *array = [[NSMutableArray alloc] init];
-        array = [[GroupsService sharedService].groupsList copy];
+        array = [[SectionService sharedService].groupsList copy];
         NSInteger selectedRow = [pickerView selectedRowInComponent:0];
         Section *section = [array objectAtIndex:selectedRow];
-        selectedPickerRow=[NSString stringWithFormat:@"%@", section.group];
+        selectedPickerRow=[NSString stringWithFormat:@"%@", section.section];
         NSString *str = [NSString stringWithFormat:@"%@", [self.student group]];
         return str;
     }
     else
     {
         NSMutableArray *array = [[NSMutableArray alloc] init];
-        array = [[GroupsService sharedService].groupsList copy];
+        array = [[SectionService sharedService].groupsList copy];
         NSInteger i;
         pickerRowName = [[NSMutableArray alloc]init];
         pickerRowId = [[NSMutableArray alloc]init];
         for(i = 0; i < [array count]; i++)
         {
             Section *section = [array objectAtIndex:i];
-            NSString *stringWithName = [NSString stringWithFormat:@"%@",  section.group];
+            NSString *stringWithName = [NSString stringWithFormat:@"%@",  section.section];
             pickRowName = stringWithName;
-            NSString *stringWithId = [NSString stringWithFormat:@"%@", section.groupId];
+            NSString *stringWithId = [NSString stringWithFormat:@"%@", section.sectionId];
             [pickerRowName valueForKey:@"group"];
             [pickerRowId addObject:stringWithId];
             if(row == i)
@@ -332,18 +333,18 @@ numberOfRowsInComponent:(NSInteger)component
        inComponent:(NSInteger)component
 {
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    array = [[GroupsService sharedService].groupsList copy];
+    array = [[SectionService sharedService].groupsList copy];
     
     NSInteger selectedRow = [pickerView selectedRowInComponent:0];
     Section *section = [array objectAtIndex:selectedRow];
-    NSLog(@"%@", section.group);
-    pickRowName=[NSString stringWithFormat:@"%@", section.group];
+    NSLog(@"%@", section.section);
+    pickRowName=[NSString stringWithFormat:@"%@", section.section];
 }
 
 - (void)refreshPicker
 {
     
-    [[GroupsService sharedService] updateGroupsList];
+    [[SectionService sharedService] updateSectionList];
     [self.groupsPickerView reloadAllComponents];
     
 }

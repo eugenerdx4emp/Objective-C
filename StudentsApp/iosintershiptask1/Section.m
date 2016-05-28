@@ -11,25 +11,25 @@
 @implementation Section
 
 #pragma mark - Section initialization
-- (Section *)initGroupWithId:(NSString *)groupId
-                         group:(NSString *)group
+- (Section *)initSectionWithId:(NSString *)sectionId
+                         section:(NSString *)section
 {
     self = [super init];
     if (self)
     {
         
-        _groupId = groupId;
-        _group = group;
+        _sectionId = sectionId;
+        _section = section;
     }
     return self;
 }
 
 
-+ (Section *)groupWithId:(NSString *)groupId
-                   group:(NSString *)group
++ (Section *)sectionWithId:(NSString *)sectionId
+                   section:(NSString *)section
 
 {
-    return [[Section alloc] initGroupWithId:groupId group:group];
+    return [[Section alloc] initSectionWithId:sectionId section:section];
     
 }
 

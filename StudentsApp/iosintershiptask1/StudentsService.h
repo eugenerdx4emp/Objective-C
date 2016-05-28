@@ -11,7 +11,7 @@
 #import "Network.h"
 #import "StudentAddViewController.h"
 #import "Section.h"
-#import "GroupsService.h"
+#import "SectionService.h"
 #import "DBManager.h"
 
 extern NSString * const NotificationStudentsServiceHasHTTPRequests;
@@ -23,7 +23,6 @@ extern NSString * const NotificationStudentsServiceStudentUpdated;
 
 @property (strong, nonatomic, readonly) NSArray *studentsList;
 @property (strong, nonatomic, readonly) NSDictionary *groupedStudentBySectionAndSortedById;
-
 @property (strong, nonatomic) NSMutableData *infoData;
 
 

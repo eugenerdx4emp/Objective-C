@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Student.h"
 #import "StudentsService.h"
-#import "GroupsService.h"
+#import "SectionService.h"
 
 
 
@@ -23,10 +23,10 @@
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *arrayField;
 @property (strong, nonatomic) IBOutlet UIImageView* imageView;
 @property (assign, nonatomic) BOOL atPresent;
-@property (strong, nonatomic) NSMutableData *infoData;
 @property (strong, nonatomic) NSString *imageName;
 @property (strong, nonatomic) UIImage *imageContent;
 @property (weak, nonatomic) IBOutlet UIPickerView *groupsPickerView;
+
 - (IBAction)editSectionButton:(id)sender;
 - (IBAction)addSectionButton:(id)sender;
 - (IBAction)deleteSectionButton:(id)sender;

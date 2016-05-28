@@ -17,9 +17,9 @@ typedef enum {
     RequestTypePostImage
 } RequestType;
 
-
-
 @interface Network : NSObject
+
 - (void) performRequestWithType:(RequestType)type params:(NSString *)params withUrl:(NSURL *) url completionHandler:(void (^)(NSData * data, NSURLResponse *  response, NSError *  error))completionHandler;
 - (BOOL)connectedToInternet;
+
 @end

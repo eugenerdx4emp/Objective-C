@@ -312,13 +312,16 @@ NSString * const NotificationStudentsServiceStudentsListUpdated = @"Notification
 
 - (void)sendImageToServer:(Student *)student
 {
-    
-    NSString *url = @"https://linneage.ru/phpuploadtutorial/uploader.php";
-    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
-                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                        timeoutInterval:60.0f];
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+
+    NSURL *url = [NSURL URLWithString:@"https://linneage.ru/phpuploadtutorial/uploader.php"];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:nil];
+
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:60.0];
+
+
     [theRequest setHTTPMethod:@"POST"];
     
     NSString *boundary = @"---------------------------14737809831466499882746641449";
@@ -347,12 +350,12 @@ NSString * const NotificationStudentsServiceStudentsListUpdated = @"Notification
     [theRequest setHTTPBody:body];
     
     
-    NSURLConnection *connection = [NSURLConnection connectionWithRequest:theRequest delegate:self];
-    if (connection) {
-        self.infoData = [NSMutableData data];
-    } else {
-        NSLog(@"Connection failed");
-    }
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:theRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+                                      {
+                                        
+                                      }];
+    [dataTask resume];
+
 }
 
 

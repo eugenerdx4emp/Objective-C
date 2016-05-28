@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 @interface Section : NSObject
-@property (nonatomic, copy) NSString *groupId;
-@property (nonatomic, copy) NSString *group;
+@property (nonatomic, copy) NSString *sectionId;
+@property (nonatomic, copy) NSString *section;
 
 
-+ (Section *)groupWithId:(NSString *)groupId
-                      group:(NSString *)group;
++ (Section *)sectionWithId:(NSString *)sectionId
+                      section:(NSString *)section;
 @end

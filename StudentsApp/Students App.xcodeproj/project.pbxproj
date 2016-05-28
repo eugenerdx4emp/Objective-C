@@ -21,7 +21,7 @@
 		0F5CFA741CDBB01D005396E4 /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5CFA731CDBB01D005396E4 /* Section.m */; };
 		0F9FD0CA1CAD9CB60036B67B /* StudentAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9FD0C91CAD9CB60036B67B /* StudentAddViewController.m */; };
 		0FA60AFA1CEF3DAC0085203F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 0FA60AF91CEF3DAC0085203F /* database.db */; };
-		0FA9EFEB1CDD6FD700BF7440 /* GroupsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9EFEA1CDD6FD700BF7440 /* GroupsService.m */; };
+		0FA9EFEB1CDD6FD700BF7440 /* SectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9EFEA1CDD6FD700BF7440 /* SectionService.m */; };
 		0FD873471CD4E460003A1B72 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD873461CD4E460003A1B72 /* Network.m */; };
 		0FE1BF151CF3CCB600A31F94 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE1BF141CF3CCB600A31F94 /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
@@ -51,8 +51,8 @@
 		0F9FD0C81CAD9CB60036B67B /* StudentAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentAddViewController.h; sourceTree = "<group>"; };
 		0F9FD0C91CAD9CB60036B67B /* StudentAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentAddViewController.m; sourceTree = "<group>"; };
 		0FA60AF91CEF3DAC0085203F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = database.db; path = iosintershiptask1/database.db; sourceTree = "<group>"; };
-		0FA9EFE91CDD6FD700BF7440 /* GroupsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsService.h; sourceTree = "<group>"; };
-		0FA9EFEA1CDD6FD700BF7440 /* GroupsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsService.m; sourceTree = "<group>"; };
+		0FA9EFE91CDD6FD700BF7440 /* SectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionService.h; sourceTree = "<group>"; };
+		0FA9EFEA1CDD6FD700BF7440 /* SectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionService.m; sourceTree = "<group>"; };
 		0FD873451CD4E460003A1B72 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		0FD873461CD4E460003A1B72 /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
 		0FE1BF141CF3CCB600A31F94 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -84,8 +84,8 @@
 				0FD873461CD4E460003A1B72 /* Network.m */,
 				0F5CFA721CDBB01D005396E4 /* Section.h */,
 				0F5CFA731CDBB01D005396E4 /* Section.m */,
-				0FA9EFE91CDD6FD700BF7440 /* GroupsService.h */,
-				0FA9EFEA1CDD6FD700BF7440 /* GroupsService.m */,
+				0FA9EFE91CDD6FD700BF7440 /* SectionService.h */,
+				0FA9EFEA1CDD6FD700BF7440 /* SectionService.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 				0F3E62BB1CEE0A1900BAE7B8 /* DBManager.m in Sources */,
 				0F3617F11CA936BB00D0BC0E /* main.m in Sources */,
 				0F36180D1CA936E600D0BC0E /* StudentsService.m in Sources */,
-				0FA9EFEB1CDD6FD700BF7440 /* GroupsService.m in Sources */,
+				0FA9EFEB1CDD6FD700BF7440 /* SectionService.m in Sources */,
 				0F5949DA1CCBB27400F6E91B /* StudentListViewController.m in Sources */,
 				0FD873471CD4E460003A1B72 /* Network.m in Sources */,
 				0F36180C1CA936E600D0BC0E /* Student.m in Sources */,

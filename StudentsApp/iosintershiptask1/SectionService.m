@@ -6,28 +6,28 @@
 //  Copyright © 2016 eugenerdx. All rights reserved.
 //
 
-#import "GroupsService.h"
+#import "SectionService.h"
 
 NSString * const NotificationGroupsServiceHasHTTPRequests     = @"NotificationGroupsServiceHasHTTPRequests";
 NSString * const NotificationGroupsServiceHasNoHTTPRequests   = @"NotificationGroupsServiceHasNoHTTPRequests";
 NSString * const NotificationGroupsServiceSectionListUpdated = @"NotificationGroupsServiceSectionListUpdated";
 
 
-@interface GroupsService()
+@interface SectionService()
 {
     NSInteger requestsCount;
 }
 
 @end
 
-@implementation GroupsService
+@implementation SectionService
 
 #pragma mark - Singleton initialization
 
-+ (GroupsService *)sharedService
++ (SectionService *)sharedService
 {
     static dispatch_once_t pred;
-    static GroupsService *sharedService = nil;
+    static SectionService *sharedService = nil;
     dispatch_once(&pred, ^
                   {
                       sharedService = [[super alloc] initUniqueInstance];
@@ -35,12 +35,12 @@ NSString * const NotificationGroupsServiceSectionListUpdated = @"NotificationGro
     return sharedService;
 }
 
-- (GroupsService *)initUniqueInstance
+- (SectionService *)initUniqueInstance
 {
     self = [super init];
     if (self)
     {
-        [self updateGroupsList];
+        [self updateSectionList];
     }
     
     return self;
@@ -75,12 +75,12 @@ NSString * const NotificationGroupsServiceSectionListUpdated = @"NotificationGro
 
 #pragma mark External methods
 
-- (void)updateGroupsList
+- (void)updateSectionList
 {
-    [self retrieveGroups];
+    [self retrieveSections];
 }
 
-- (void)retrieveGroups
+- (void)retrieveSections
 {
     
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -102,9 +102,9 @@ NSString * const NotificationGroupsServiceSectionListUpdated = @"NotificationGro
                                               
                                               for (NSDictionary *section in groupsArray)
                                               {
-                                                  NSString *studentId = [section objectForKey:@"id"];
+                                                  NSString *sectionId = [section objectForKey:@"id"];
                                                   NSString *group = [section objectForKey:@"section"];
-                                                  Section *groupObject = [Section groupWithId:studentId group:group];
+                                                  Section *groupObject = [Section sectionWithId:sectionId section:group];
                                                   [tempGroupsArray addObject:groupObject];
                                               }
                                               _groupsList = tempGroupsArray;
@@ -127,7 +127,7 @@ NSString * const NotificationGroupsServiceSectionListUpdated = @"NotificationGro
 {
     NSURL *url = [NSURL URLWithString:@"https://linneage.ru/studentlist/create_group.php"];
     
-    NSString *params = [NSString stringWithFormat:@"section=%@", section.group];
+    NSString *params = [NSString stringWithFormat:@"section=%@", section.section];
 
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject
@@ -158,7 +158,7 @@ NSString * const NotificationGroupsServiceSectionListUpdated = @"NotificationGro
 {
     
     NSURL *url = [NSURL URLWithString:@"https://linneage.ru/studentlist/delete_section.php"];
-    NSString *params = [NSString stringWithFormat:@"id=%@",section.groupId];
+    NSString *params = [NSString stringWithFormat:@"id=%@",section.sectionId];
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject
                                                                  delegate:nil
@@ -187,7 +187,7 @@ NSString * const NotificationGroupsServiceSectionListUpdated = @"NotificationGro
 {
     
     NSURL *url = [NSURL URLWithString:@"https://linneage.ru/studentlist/edit_section.php"];
-    NSString *params = [NSString stringWithFormat:@"id=%@&section=%@",section.groupId, section.group];
+    NSString *params = [NSString stringWithFormat:@"id=%@&section=%@",section.sectionId, section.section];
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject
                                                                  delegate:nil

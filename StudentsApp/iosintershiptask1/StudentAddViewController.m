@@ -80,7 +80,7 @@ typedef enum
 }
 - (void)refreshPicker
 {
-    [[GroupsService sharedService] updateGroupsList];
+    [[SectionService sharedService] updateSectionList];
     [self.groupsPickerView reloadAllComponents];
 }
 
@@ -365,8 +365,8 @@ shouldChangeCharactersInRange:(NSRange)range
 - (NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component
 {
-    NSLog(@"count = %lu", (unsigned long)[[GroupsService sharedService].groupsList count]);
-    return [[GroupsService sharedService].groupsList count];
+    NSLog(@"count = %lu", (unsigned long)[[SectionService sharedService].groupsList count]);
+    return [[SectionService sharedService].groupsList count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView
@@ -375,13 +375,18 @@ numberOfRowsInComponent:(NSInteger)component
 {
 
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    array = [[GroupsService sharedService].groupsList copy];
+    array = [[SectionService sharedService].groupsList copy];
     NSInteger i;
     
+    
+    Section *firstSection = [array objectAtIndex:0];
+    NSLog(@"%@", firstSection.sectionId);
+    selectedPickerRow = firstSection.sectionId;
     for(i = 0; i < [array count]; i++)
     {
         Section *section = [array objectAtIndex:i];
-        NSString *string = [NSString stringWithFormat:@"%@",  section.group];
+
+        NSString *string = [NSString stringWithFormat:@"%@",  section.section];
     if(row == i)
         {
             return string;
@@ -399,12 +404,12 @@ numberOfRowsInComponent:(NSInteger)component
        inComponent:(NSInteger)component
 {
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    array = [[GroupsService sharedService].groupsList copy];
+    array = [[SectionService sharedService].groupsList copy];
     
     NSInteger selectedRow = [pickerView selectedRowInComponent:0];
     Section *section = [array objectAtIndex:selectedRow];
-    selectedPickerRow=[NSString stringWithFormat:@"%@", section.groupId];
-    selectedPickerName=[NSString stringWithFormat:@"%@", section.group];
+    selectedPickerRow=[NSString stringWithFormat:@"%@", section.sectionId];
+    selectedPickerName=[NSString stringWithFormat:@"%@", section.section];
 
     NSLog(@"%@", selectedPickerRow);
 }
@@ -414,8 +419,8 @@ numberOfRowsInComponent:(NSInteger)component
 
 - (IBAction)deleteSectionButton:(id)sender
 {
-    [[GroupsService sharedService] sectionDelete:[Section groupWithId:selectedPickerRow
-                                                                group:nil]];
+    [[SectionService sharedService] sectionDelete:[Section sectionWithId:selectedPickerRow
+                                                                section:nil]];
 
 }
 
@@ -458,8 +463,8 @@ numberOfRowsInComponent:(NSInteger)component
                                    NSLog(@"textfield value: %@",newSectionName.text);
                                    NSString *text = newSectionName.text;
                                    NSLog(@"%@", text);
-                                   [[GroupsService sharedService] sectionEdit:[Section groupWithId:selectedPickerRow
-                                                                                             group:text]];
+                                   [[SectionService sharedService] sectionEdit:[Section sectionWithId:selectedPickerRow
+                                                                                             section:text]];
                                    
                                }];
     
@@ -511,8 +516,8 @@ numberOfRowsInComponent:(NSInteger)component
                                    NSLog(@"OK action");
                                    NSLog(@"textfield value: %@",newSectionName.text);
                                    NSString *text = newSectionName.text;
-                                   [[GroupsService sharedService] sectiontAdd:[Section groupWithId:nil
-                                                                                             group:text]];
+                                   [[SectionService sharedService] sectiontAdd:[Section sectionWithId:nil
+                                                                                             section:text]];
                                    
                                }];
     

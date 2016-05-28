@@ -13,21 +13,22 @@
 
 @interface StudentListViewController ()
 {
+    
     NSString *selectedStudentId,
     *selectedStudentFirstName,
     *selectedStudentLastName,
     *selectedStudentEmail,
     *selectedStudentPhone,
     *selectedStudentImageName;
+    
 }
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
-@property (nonatomic, strong) DBManager *dbManager;
+@property (strong, nonatomic) DBManager *dbManager;
+@property (strong, nonatomic) NSArray *arrPeopleInfo;
 
-@property (nonatomic, strong) NSArray *arrPeopleInfo;
-
-@property (nonatomic) int recordIDToEdit;
 -(void)loadData;
+
 @end
 
 @implementation StudentListViewController
@@ -240,7 +241,7 @@ moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
     
     if (fromIndexPath.section != toIndexPath.section ) {
         NSMutableArray *section = [NSMutableArray new];
-        section = [[GroupsService sharedService].groupsList copy];
+        section = [[SectionService sharedService].groupsList copy];
         NSArray *sectionArray = [[NSArray alloc]init];
         sectionArray = [[StudentsService sharedService].groupedStudentBySectionAndSortedById allKeys];
         NSString *key = [sectionArray objectAtIndex:toIndexPath.section];
@@ -276,7 +277,7 @@ moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
 - (void)tableView:(UITableView *)tableView willBeginReorderingRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSMutableArray *section = [NSMutableArray new];
-    section = [[GroupsService sharedService].groupsList copy];
+    section = [[SectionService sharedService].groupsList copy];
     NSArray *sectionArray = [[NSArray alloc]init];
     sectionArray = [[StudentsService sharedService].groupedStudentBySectionAndSortedById allKeys];
     NSString *key = [sectionArray objectAtIndex:indexPath.section];

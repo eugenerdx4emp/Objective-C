@@ -12,11 +12,6 @@
 #import "DBManager.h"
 
 @interface StudentListViewController : UITableViewController <UIGestureRecognizerDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *studentsTableView;
-
-
-
-- (IBAction)editPuttonPressed:(id)sender;
 
 @property (assign) NSInteger selectedStudentId;
 @property (assign) NSInteger selectedStudentSection;
