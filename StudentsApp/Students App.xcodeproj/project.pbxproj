@@ -22,6 +22,7 @@
 		0F9FD0CA1CAD9CB60036B67B /* StudentAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9FD0C91CAD9CB60036B67B /* StudentAddViewController.m */; };
 		0FA60AFA1CEF3DAC0085203F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 0FA60AF91CEF3DAC0085203F /* database.db */; };
 		0FA9EFEB1CDD6FD700BF7440 /* SectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9EFEA1CDD6FD700BF7440 /* SectionService.m */; };
+		0FD21E211CFC57A700D959F3 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FD21E201CFC57A700D959F3 /* logo.png */; };
 		0FD873471CD4E460003A1B72 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD873461CD4E460003A1B72 /* Network.m */; };
 		0FE1BF151CF3CCB600A31F94 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE1BF141CF3CCB600A31F94 /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		0FA60AF91CEF3DAC0085203F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = database.db; path = iosintershiptask1/database.db; sourceTree = "<group>"; };
 		0FA9EFE91CDD6FD700BF7440 /* SectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionService.h; sourceTree = "<group>"; };
 		0FA9EFEA1CDD6FD700BF7440 /* SectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionService.m; sourceTree = "<group>"; };
+		0FD21E201CFC57A700D959F3 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		0FD873451CD4E460003A1B72 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		0FD873461CD4E460003A1B72 /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
 		0FE1BF141CF3CCB600A31F94 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -138,6 +140,7 @@
 				0F2C8FA31CACBE690028C983 /* View */,
 				0F2C8FA41CACBE850028C983 /* Controller */,
 				0F3617FB1CA936BB00D0BC0E /* Assets.xcassets */,
+				0FD21E201CFC57A700D959F3 /* logo.png */,
 				0F3617EF1CA936BB00D0BC0E /* Supporting Files */,
 			);
 			name = "Students App";
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FA60AFA1CEF3DAC0085203F /* database.db in Resources */,
+				0FD21E211CFC57A700D959F3 /* logo.png in Resources */,
 				0F3617FF1CA936BB00D0BC0E /* LaunchScreen.storyboard in Resources */,
 				0F3617FC1CA936BB00D0BC0E /* Assets.xcassets in Resources */,
 				0F3617FA1CA936BB00D0BC0E /* Main.storyboard in Resources */,
