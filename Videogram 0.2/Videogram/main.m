@@ -1,9 +1,9 @@
 //
 //  main.m
-//  CODEMagYTVideos
+//  Videogram
 //
-//  Created by Jason Bender on 11/10/15.
-//  Copyright © 2015 Rocksauce Studios. All rights reserved.
+//  Created by eugenerdx on 25.05.16.
+//  Copyright © 2016 Evgeny Ulyankin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
