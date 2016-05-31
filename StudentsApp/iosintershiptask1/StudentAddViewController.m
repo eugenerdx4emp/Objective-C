@@ -86,6 +86,14 @@ typedef enum
 {
     [[SectionService sharedService] updateSectionList];
     [self.groupsPickerView reloadAllComponents];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [[SectionService sharedService].groupsList copy];
+    Section *firstSection = [array objectAtIndex:0];
+    if(selectedPickerRow == nil){
+        
+        selectedPickerRow = firstSection.sectionId;
+    }
+    
 }
 
 #pragma mark - Service Methods
@@ -99,6 +107,7 @@ typedef enum
         UIImage* image = self.imageContent;
         NSInteger random = arc4random()%1000;
         self.imageName = [NSString stringWithFormat:@"photo%@%ld.jpg", [self.firstNameTextField text], (long)random];
+    
         [[StudentsService sharedService] studentAdd:[Student studentWithId:nil
                                                                  firstName:[self.firstNameTextField text]
                                                                   lastName:[self.lastNameTextField text]
@@ -381,11 +390,7 @@ numberOfRowsInComponent:(NSInteger)component
     NSMutableArray *array = [[NSMutableArray alloc] init];
     array = [[SectionService sharedService].groupsList copy];
     NSInteger i;
-    
-    
-    Section *firstSection = [array objectAtIndex:0];
-    NSLog(@"%@", firstSection.sectionId);
-    selectedPickerRow = firstSection.sectionId;
+   
     for(i = 0; i < [array count]; i++)
     {
         Section *section = [array objectAtIndex:i];
@@ -423,6 +428,14 @@ numberOfRowsInComponent:(NSInteger)component
 
 - (IBAction)deleteSectionButton:(id)sender
 {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [[SectionService sharedService].groupsList copy];
+    Section *firstSection = [array objectAtIndex:0];
+    if(selectedPickerRow == nil)
+    {
+        selectedPickerRow = firstSection.sectionId;
+    }
+    
     [[SectionService sharedService] sectionDelete:[Section sectionWithId:selectedPickerRow
                                                                 section:nil]];
 
@@ -431,7 +444,7 @@ numberOfRowsInComponent:(NSInteger)component
 
 - (IBAction)editSectionButton:(id)sender
 {
-    NSString *alertTitle = @"Please a new group";
+    NSString *alertTitle = @"Please edit a group";
     NSString *alertMessage = @"Please enter name";
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
@@ -440,6 +453,18 @@ numberOfRowsInComponent:(NSInteger)component
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
      {
+         
+         NSMutableArray *array = [[NSMutableArray alloc] init];
+         array = [[SectionService sharedService].groupsList copy];
+         
+         Section *firstSection = [array objectAtIndex:0];
+         if(selectedPickerName == nil){
+             
+             selectedPickerName = firstSection.section;
+             textField.text = selectedPickerName;
+             textField.secureTextEntry = NO;
+         }
+         
          textField.text = selectedPickerName;
          textField.secureTextEntry = NO;
          
