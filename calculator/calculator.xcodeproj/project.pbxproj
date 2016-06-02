@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F28EA6C1D00E0A700B98625 /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28EA6B1D00E0A700B98625 /* UILabel+Copyable.m */; };
 		0F8750111CFE2D9300B8BAE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8750101CFE2D9300B8BAE5 /* main.m */; };
 		0F8750141CFE2D9300B8BAE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8750131CFE2D9300B8BAE5 /* AppDelegate.m */; };
 		0F8750171CFE2D9300B8BAE5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8750161CFE2D9300B8BAE5 /* ViewController.m */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F28EA6A1D00E0A600B98625 /* UILabel+Copyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copyable.h"; sourceTree = "<group>"; };
+		0F28EA6B1D00E0A700B98625 /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
 		0F87500C1CFE2D9200B8BAE5 /* calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8750101CFE2D9300B8BAE5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F8750121CFE2D9300B8BAE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -42,6 +45,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F2F74CD1D00E58E00B619C8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F8750151CFE2D9300B8BAE5 /* ViewController.h */,
+				0F8750161CFE2D9300B8BAE5 /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		0F2F74CF1D00E5B400B619C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F8750261CFE34AB00B8BAE5 /* CalcService.h */,
+				0F8750271CFE34AB00B8BAE5 /* CalcService.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0F2F74D01D00E5D700B619C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0F8750181CFE2D9300B8BAE5 /* Main.storyboard */,
+				0F87501D1CFE2D9300B8BAE5 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0F2F74D11D00E5EB00B619C8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0F28EA6A1D00E0A600B98625 /* UILabel+Copyable.h */,
+				0F28EA6B1D00E0A700B98625 /* UILabel+Copyable.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		0F8750031CFE2D9200B8BAE5 = {
 			isa = PBXGroup;
 			children = (
@@ -61,15 +100,11 @@
 		0F87500E1CFE2D9200B8BAE5 /* calculator */ = {
 			isa = PBXGroup;
 			children = (
-				0F8750121CFE2D9300B8BAE5 /* AppDelegate.h */,
-				0F8750131CFE2D9300B8BAE5 /* AppDelegate.m */,
-				0F8750151CFE2D9300B8BAE5 /* ViewController.h */,
-				0F8750161CFE2D9300B8BAE5 /* ViewController.m */,
-				0F8750261CFE34AB00B8BAE5 /* CalcService.h */,
-				0F8750271CFE34AB00B8BAE5 /* CalcService.m */,
-				0F8750181CFE2D9300B8BAE5 /* Main.storyboard */,
+				0F2F74D01D00E5D700B619C8 /* View */,
+				0F2F74CD1D00E58E00B619C8 /* Controller */,
+				0F2F74CF1D00E5B400B619C8 /* Model */,
+				0F2F74D11D00E5EB00B619C8 /* Categories */,
 				0F87501B1CFE2D9300B8BAE5 /* Assets.xcassets */,
-				0F87501D1CFE2D9300B8BAE5 /* LaunchScreen.storyboard */,
 				0F8750201CFE2D9300B8BAE5 /* Info.plist */,
 				0F87500F1CFE2D9200B8BAE5 /* Supporting Files */,
 			);
@@ -80,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				0F8750101CFE2D9300B8BAE5 /* main.m */,
+				0F8750121CFE2D9300B8BAE5 /* AppDelegate.h */,
+				0F8750131CFE2D9300B8BAE5 /* AppDelegate.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -159,6 +196,7 @@
 				0F8750281CFE34AB00B8BAE5 /* CalcService.m in Sources */,
 				0F8750141CFE2D9300B8BAE5 /* AppDelegate.m in Sources */,
 				0F8750111CFE2D9300B8BAE5 /* main.m in Sources */,
+				0F28EA6C1D00E0A700B98625 /* UILabel+Copyable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +314,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = study.calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -287,6 +326,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = study.calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

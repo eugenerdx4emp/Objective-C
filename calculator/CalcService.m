@@ -62,10 +62,7 @@ NSString* const calculationClearAllExpressionOperation      = @"AC";
 
 - (void)performWaitingOperation
 {
-    if (waitingExpression  == 0)
-            {
-        expression = expression * expression;
-            }
+ 
     if ([calculationPlusOperation isEqual:waitingOperation])
             {
         expression = waitingExpression + expression;
@@ -88,6 +85,12 @@ NSString* const calculationClearAllExpressionOperation      = @"AC";
                 {
             expression = waitingExpression / expression;
                 }
+        else
+        {
+            self.error = divideByZero;
+            self.calcErrorMessage = @"Divide by Zero";
+        }
+
             }
 }
 

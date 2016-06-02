@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
+enum {
+    divideByZero   =    1,
+};
+typedef NSInteger calcError;
 @interface CalcService : NSObject
+
+@property (assign, nonatomic) calcError error;
+@property (strong, nonatomic) NSString *calcErrorMessage;
 
 - (void)setOperand:(double)aDouble;
 - (double)performOperation:(NSString *)operation;

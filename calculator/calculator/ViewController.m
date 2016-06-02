@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "CalcService.h"
-
+#import "UILabel+Copyable.h"
 
 @interface ViewController ()
 {
@@ -18,8 +18,8 @@
     double calcMemory;
     BOOL middleOfTypingANumber;
     BOOL decimalAlreadyEnteredInDisplay;
-    
 }
+
 - (IBAction)digitPressed:(UIButton *)sender;
 - (IBAction)operationPressed:(UIButton *)sender;
 - (IBAction)decimalPressed:(UIButton *)sender;
@@ -48,12 +48,12 @@
     [super viewWillAppear:animated];
     [self.clearButton setTitle:@"AC"
                       forState:UIControlStateNormal];
+    display.copyingEnabled = 1;
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-
 
 
 #pragma mark - Calc Methods
@@ -79,18 +79,16 @@
     }
     else
     {
-      
         [display setText:digit];
         middleOfTypingANumber = YES;
     }
-    
-    
+  
 }
 
 - (IBAction)operationPressed:(UIButton *)sender
 {
     
-    
+    zeroAfterReset.hidden = YES;
     NSString *string = [NSString stringWithFormat:@"%@", sender.titleLabel.text];
     [self removingAndInstallingBorderOfButton:sender withString:string];
     NSLog(@"selected %@",sender.titleLabel.text);
@@ -103,6 +101,18 @@
       NSString *operation = [[sender titleLabel] text];
     double result = [[self service] performOperation:operation];
     [display setText:[NSString stringWithFormat:@"%g", result]];
+    if (service.error) {
+        [self showError:service.calcErrorMessage];
+        service.error = 0;
+        service.calcErrorMessage = @"";
+    }
+}
+
+- (void)showError:(NSString *)message {
+    
+    [display setText:message];
+
+    
 }
 
 - (IBAction)decimalPressed:(UIButton *)sender
@@ -195,7 +205,6 @@
     NSString *inversionString = @"+/-";
     NSString *devideString = @"÷";
     NSString *percentString = @"%";
-    NSString *clearString = @"C";
 
 
     if([string isEqualToString:devideString])
