@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="laL-8A-4P6">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -44,7 +43,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="clearPressed:" destination="laL-8A-4P6" eventType="touchUpInside" id="IwY-nI-Egj"/>
+                                    <action selector="clearPressed:" destination="laL-8A-4P6" eventType="touchUpInside" id="bIN-ja-4Wd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJf-dI-erA">
@@ -126,6 +125,31 @@
                                 </variation>
                                 <connections>
                                     <action selector="digitPressed:" destination="laL-8A-4P6" eventType="touchUpInside" id="Fxh-ZQ-frM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HV-zH-Ug9">
+                                <rect key="frame" x="95" y="289" width="94" height="94"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0HV-zH-Ug9" secondAttribute="height" multiplier="1:1" id="mVy-Qj-sTh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                <state key="normal" title="8">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="mVy-Qj-sTh"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="mVy-Qj-sTh"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="digitPressed:" destination="laL-8A-4P6" eventType="touchUpInside" id="2on-Aq-v3B"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laf-PP-5dx">
@@ -494,31 +518,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="operationPressed:" destination="laL-8A-4P6" eventType="touchUpInside" id="PqQ-4x-zrX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HV-zH-Ug9">
-                                <rect key="frame" x="95" y="289" width="94" height="94"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="0HV-zH-Ug9" secondAttribute="height" multiplier="1:1" id="mVy-Qj-sTh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
-                                <state key="normal" title="8">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="mVy-Qj-sTh"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="mVy-Qj-sTh"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="digitPressed:" destination="laL-8A-4P6" eventType="touchUpInside" id="2on-Aq-v3B"/>
                                 </connections>
                             </button>
                         </subviews>

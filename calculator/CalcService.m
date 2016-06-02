@@ -18,73 +18,77 @@ NSString* const calculationClearLastExpressionOperation     = @"C";
 NSString* const calculationClearAllExpressionOperation      = @"AC";
 
 
+@interface CalcService()
+{
+    double expression;
+    double waitingExpression;
+    NSString * waitingOperation;
+}
 
+@end
 
 @implementation CalcService
 
-- (void)setOperand:(double)aDouble {
-    
-    operand = aDouble;
+- (void)setOperand:(double)doubleExpression
+{
+    expression = doubleExpression;
 }
 
-- (double)performOperation:(NSString *)operation {
-    if ([operation isEqual:calculationPercentOperation]) {
-        
-        operand = operand / 100;
-        
-    }
-    
-    if ([operation isEqual:calculationPercentOperation]) {
-        
-        operand = operand / 100;
-        
-    }
-
-    
-   if ([operation isEqualToString:calculationInverseOperation]) {
-        
-        if (operand != 0) {
-            operand = -1 * operand;
-        } else {
-            self.error = inverseOfZero;
-            self.calcErrorMessage = @"Inverse of Zero";
+- (double)performOperation:(NSString *)operation
+{
+    if ([operation isEqual:calculationPercentOperation])
+        {
+        expression = expression / 100;
         }
-            
-  
-    } else {
-        
+    if ([operation isEqual:calculationClearAllExpressionOperation])
+        {
+        expression = 0;
+        }
+    if ([operation isEqualToString:calculationInverseOperation])
+        {
+        if (expression != 0)
+            {
+            expression = -1 * expression;
+            }
+        }
+    else
+    {
         [self performWaitingOperation];
         waitingOperation = operation;
-        waitingOperand = operand;
+        waitingExpression = expression;
     }
-    
-    return operand;
+    return expression;
 }
 
-- (void)performWaitingOperation {
-    
-    if ([calculationPlusOperation isEqual:waitingOperation]) {
-        
-        operand = waitingOperand + operand;
-        
-    } else if ([calculationMultipleOperation isEqual:waitingOperation]) {
-        
-        operand = waitingOperand * operand;
-        
-    } else if ([calculationMinusOperation isEqual:waitingOperation]) {
-        
-        operand = waitingOperand - operand;
-        
-    } else if ([calculationDivideOperation isEqual:waitingOperation]) {
-        
-        if (operand != 0) {
-            operand = waitingOperand / operand;
-        } else {
-            self.error = divideByZero;
-            self.calcErrorMessage = @"Divide by Zero";
-        }
-    }
-   
+- (void)performWaitingOperation
+{
+    if (waitingExpression  == 0)
+            {
+        expression = expression * expression;
+            }
+    if ([calculationPlusOperation isEqual:waitingOperation])
+            {
+        expression = waitingExpression + expression;
+            }
+    else if ([calculationMultipleOperation isEqual:waitingOperation])
+            {
+        expression = waitingExpression * expression;
+            }
+    else if ([calculationMinusOperation isEqual:waitingOperation])
+            {
+        expression = waitingExpression - expression;
+            }
+    else if ([calculationClearLastExpressionOperation isEqual:waitingOperation])
+            {
+        expression = waitingExpression;
+            }
+    else if ([calculationDivideOperation isEqual:waitingOperation])
+            {
+        if (expression != 0)
+                {
+            expression = waitingExpression / expression;
+                }
+            }
 }
 
 @end

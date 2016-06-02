@@ -16,7 +16,7 @@
     __weak IBOutlet UILabel *display;
     CalcService *service;
     double calcMemory;
-    BOOL userIsInTheMiddleOfTypingANumber;
+    BOOL middleOfTypingANumber;
     BOOL decimalAlreadyEnteredInDisplay;
     
 }
@@ -37,8 +37,7 @@
 
 @implementation ViewController
 
-#pragma mark - UIControllerView Life Cycle
-
+#pragma mark - View Life Cycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -47,100 +46,139 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.clearButton setTitle:@"AC" forState:UIControlStateNormal];
-    
+    [self.clearButton setTitle:@"AC"
+                      forState:UIControlStateNormal];
 }
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Calc Methods
 
+
+#pragma mark - Calc Methods
 - (CalcService*)service
 {
-    if (!service) {
+    if (!service)
+    {
         service = [[CalcService alloc] init];
     }
     return service;
 }
 
-- (IBAction)digitPressed:(UIButton *)sender {
+- (IBAction)digitPressed:(UIButton *)sender
+{
     zeroAfterReset.hidden = YES;
-
     NSString *digit = sender.titleLabel.text;
- 
-    [self.clearButton setTitle:@"C" forState:UIControlStateNormal];
-    if (userIsInTheMiddleOfTypingANumber) {
-        if (([digit hasPrefix:@"0"]) && ([digit length] > 1))
-        {
-            [digit substringFromIndex:1];
-        }
+    [self.clearButton setTitle:@"C"
+                      forState:UIControlStateNormal];
+    if (middleOfTypingANumber)
+    {
         display.text = [display.text stringByAppendingString:digit];
         
-    } else {
+    }
+    else
+    {
       
         [display setText:digit];
-        userIsInTheMiddleOfTypingANumber = YES;
+        middleOfTypingANumber = YES;
     }
+    
+    
 }
 
-
-- (IBAction)operationPressed:(UIButton *)sender {
+- (IBAction)operationPressed:(UIButton *)sender
+{
     
     
     NSString *string = [NSString stringWithFormat:@"%@", sender.titleLabel.text];
     [self removingAndInstallingBorderOfButton:sender withString:string];
     NSLog(@"selected %@",sender.titleLabel.text);
-    
-    if (userIsInTheMiddleOfTypingANumber)
+    if (middleOfTypingANumber)
     {
         [[self service] setOperand:[[display text] doubleValue]];
-        userIsInTheMiddleOfTypingANumber = NO;
+        middleOfTypingANumber = NO;
         decimalAlreadyEnteredInDisplay = NO;
     }
       NSString *operation = [[sender titleLabel] text];
     double result = [[self service] performOperation:operation];
-    
     [display setText:[NSString stringWithFormat:@"%g", result]];
 }
 
-- (IBAction)decimalPressed:(UIButton *)sender {
+- (IBAction)decimalPressed:(UIButton *)sender
+{
     
-    if (decimalAlreadyEnteredInDisplay == NO) {
-        
-        if (userIsInTheMiddleOfTypingANumber == NO) {
-            
-            userIsInTheMiddleOfTypingANumber = YES;
+    if (decimalAlreadyEnteredInDisplay == NO)
+    {
+        if (middleOfTypingANumber == NO)
+        {
+            middleOfTypingANumber = YES;
             [display setText:@"0."];
-            
-        } else {
+        }
+        else
+        {
             
             [display setText:[[display text] stringByAppendingString:@"."]];
         }
-        
         decimalAlreadyEnteredInDisplay = YES;
     }
 }
 
-- (IBAction)clearPressed:(UIButton *)sender {
+- (IBAction)clearPressed:(UIButton *)sender
+{
+    
+    [self performSelector:@selector(removeBorderOfButton:)
+               withObject:self.plusButton
+               afterDelay:0];
+    [self performSelector:@selector(removeBorderOfButton:)
+               withObject:self.devideButton
+               afterDelay:0];
+    [self performSelector:@selector(removeBorderOfButton:)
+               withObject:self.multiplicationButton
+               afterDelay:0];
+    [self performSelector:@selector(removeBorderOfButton:)
+               withObject:self.minusButton
+               afterDelay:0];
+    [self performSelector:@selector(removeBorderOfButton:)
+               withObject:self.percentButton
+               afterDelay:0];
+    [self performSelector:@selector(removeBorderOfButton:)
+               withObject:self.clearButton
+               afterDelay:0];
+    
+    NSString* cString = @"C";
+    NSString* acString = @"AC";
+    NSString* string = [NSString stringWithFormat:@"%@", sender.titleLabel.text];
+
+    if([string isEqualToString:acString])
+    {
     zeroAfterReset.hidden = NO;
     service = nil;
     service = [[CalcService alloc] init];
     [display setText:@""];
-    
-    [self.clearButton setTitle:@"AC" forState:UIControlStateNormal];
+    }
+    if([string isEqualToString:cString])
+    {
+        middleOfTypingANumber = NO;
+        display.text = @"";
+        zeroAfterReset.hidden = NO;
+        [self.clearButton setTitle:@"AC"
+                          forState:UIControlStateNormal];
+    }
 }
 
+#pragma mark - service methods
 
-
-- (void)installBorderOfButton:(UIButton*)pressedButton {
+- (void)installBorderOfButton:(UIButton*)pressedButton
+{
     [[pressedButton layer] setBorderWidth:2.0f];
     [[pressedButton layer] setBorderColor:[UIColor blackColor].CGColor];
     [pressedButton setHighlighted:NO];
 }
 
 
-- (void)removeBorderOfButton:(UIButton*)unPressedButton {
+- (void)removeBorderOfButton:(UIButton*)unPressedButton
+{
     [[unPressedButton layer] setBorderWidth:0.0f];
     [[unPressedButton layer] setBorderColor:[UIColor clearColor].CGColor];
     [unPressedButton setHighlighted:NO];
@@ -157,78 +195,154 @@
     NSString *inversionString = @"+/-";
     NSString *devideString = @"÷";
     NSString *percentString = @"%";
+    NSString *clearString = @"C";
 
-    
+
     if([string isEqualToString:devideString])
     {
-        [self performSelector:@selector(installBorderOfButton:) withObject:sender afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.plusButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.equallyButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.multiplicationButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.minusButton afterDelay:0];
+        [self performSelector:@selector(installBorderOfButton:)
+                   withObject:sender
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.plusButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.equallyButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.multiplicationButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.minusButton
+                   afterDelay:0];
     }
-    
-    
-    
     if([string isEqualToString:inversionString])
     {
-        [self performSelector:@selector(removeBorderOfButton:) withObject:sender afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.equallyButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.multiplicationButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.minusButton afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:sender
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.equallyButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.multiplicationButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.minusButton
+                   afterDelay:0];
     }
     
     if([string isEqualToString:plusString])
     {
-        [self performSelector:@selector(installBorderOfButton:) withObject:sender afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.equallyButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.multiplicationButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.minusButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
+        [self performSelector:@selector(installBorderOfButton:)
+                   withObject:sender
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.equallyButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.multiplicationButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.minusButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
     }
     
     if([string isEqualToString:minusString])
     {
-        [self performSelector:@selector(installBorderOfButton:) withObject:sender afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.equallyButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.multiplicationButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.plusButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
+        [self performSelector:@selector(installBorderOfButton:)
+                   withObject:sender
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.equallyButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.multiplicationButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.plusButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
     }
     
     if([string isEqualToString:multiplicationlString])
     {
-        [self performSelector:@selector(installBorderOfButton:) withObject:sender afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.equallyButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.minusButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.plusButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
+        [self performSelector:@selector(installBorderOfButton:)
+                   withObject:sender
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.equallyButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.minusButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.plusButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
     }
     
     
     if([string isEqualToString:equalString])
     {
-        [self performSelector:@selector(removeBorderOfButton:) withObject:sender afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.multiplicationButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.minusButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.plusButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:sender
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.multiplicationButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.minusButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.plusButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
     }
     
     if([string isEqualToString:percentString])
     {
-        [self performSelector:@selector(removeBorderOfButton:) withObject:sender afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.multiplicationButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.minusButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.plusButton afterDelay:0];
-        [self performSelector:@selector(removeBorderOfButton:) withObject:self.devideButton afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:sender
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.multiplicationButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.minusButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.plusButton
+                   afterDelay:0];
+        [self performSelector:@selector(removeBorderOfButton:)
+                   withObject:self.devideButton
+                   afterDelay:0];
     }
-    
+
 }
 
 

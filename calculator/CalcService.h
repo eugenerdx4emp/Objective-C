@@ -8,22 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-enum {
-    divideByZero   = 1,
-    sqrtNegative    = 2,
-    inverseOfZero   = 3
-};
-typedef NSInteger calcError;
 
-
-@interface CalcService : NSObject {
-    double operand;
-    double waitingOperand;
-    NSString * waitingOperation;
-}
-
-@property (assign, nonatomic) calcError error;
-@property (strong, nonatomic) NSString *calcErrorMessage;
+@interface CalcService : NSObject
 
 - (void)setOperand:(double)aDouble;
 - (double)performOperation:(NSString *)operation;
